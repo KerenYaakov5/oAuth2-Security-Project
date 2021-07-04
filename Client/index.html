@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" 
+                integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="scripts.js"></script>
+
+        <title>OAuth2</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>oAuth2</h1>
+            <form id="oAuthForm" action="#" autocomplete="off">
+                <div class="form-group col-sm-8">
+                    <label for="grantTypes">Grant types</label>
+                    <select name="grantType" id="grantTypes" class="form-control">
+                        <option value="clientCredentials">Client Credentials</option>
+                        <option value="">Resource Owner Password</option>
+                        <option value="">Implicit</option>
+                        <option value="">Authorization code</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-sm-8">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
