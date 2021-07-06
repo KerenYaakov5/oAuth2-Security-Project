@@ -3,16 +3,17 @@
     padding: 0;
 }
 
+header, main, footer, nav, aside, section, div {
+    display: block;
+}
+
 :root {
     --primary-bg-color: #fefbe9; 
     --secondary-bg-color: #e1eedd; 
+    --primary-bg-color-darker: rgba(254, 251, 223, 0.5);
     --titles-primary-text-color: #f0a04b; 
     --primary-text-color: #183a1d;
     --light-bg-color: #f6c453;
-}
-
-header, main, footer, nav, aside, section, div {
-    display: block;
 }
 
 p, span {
@@ -52,7 +53,7 @@ h1 {
 }
 
 p, span {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 #wrapper {
@@ -69,29 +70,34 @@ p, span {
 #logo {
     height: 60px;
     width: 100%;
-    /* background-color: var(--light-bg-color); */
-}
-
-#left-menu li {
-    height: 40px;
-    cursor: pointer;
-    padding-left: 16px;
-}
-
-#left-menu li:hover {
-    background-color: var(--primary-bg-color);
-}
-
-#left-menu li.active {
     background-color: var(--light-bg-color);
 }
 
-#left-menu li p {
-    line-height: 40px;
+#left-menu li, #left-menu .section-title {
+    height: 32px;
+    padding-left: 16px;
+    line-height: 32px;
 }
 
-.separator-bottom {
+#left-menu li {
+    cursor: pointer;
+}
+
+#left-menu .section-title {
+    font-weight: bold;
     border-bottom: 1px solid var(--primary-text-color);
+}
+
+#left-menu .section-title:not(:first-child) {
+    margin-top: 24px;
+}
+
+#left-menu li:hover {
+    background-color: var(--primary-bg-color-darker);
+}
+
+#left-menu li.active {
+    background-color: var(--primary-bg-color);
 }
 
 /* Main content */
