@@ -50,6 +50,9 @@ h1 {
     font-weight: bold;
     color: var(--titles-primary-text-color); 
     font-size: 32px;
+    margin: 19px 0px;
+    line-height: 40px;
+    border-bottom: 2px solid var(--secondary-bg-color);
 }
 
 p, span {
@@ -70,7 +73,8 @@ p, span {
 #logo {
     height: 60px;
     width: 100%;
-    background-color: var(--light-bg-color);
+    background-color: var(--primary-bg-color);
+    /* border-bottom: 1px solid var(--light-bg-color); */
 }
 
 #left-menu li, #left-menu .section-title {
@@ -117,4 +121,7 @@ p, span {
     border-color: var(--light-bg-color);
 }
 
+h1 + main {
+    margin-left: 16px;
+}
 
