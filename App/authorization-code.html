@@ -11,7 +11,7 @@
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="scripts.js"></script>
 
-        <title>User Details</title>
+        <title>Authorization Code</title>
     </head>
     <body>
         <div id="wrapper">
@@ -19,23 +19,17 @@
                 <div id="logo"></div>
                 <ul>
                     <li class="separator-bottom"><a href="oauth2.html"><p>oAuth2</p></a></li>
-                    <li><a href="authorization-code.html"><p>Authorization code grant</p></a></li>
+                    <li class="active"><a href="authorization-code.html"><p>Authorization code grant</p></a></li>
                     <li><a href="client-credentials.html"><p>Client Credentials grant</p></a></li>
                     <li><a href="implicit.html"><p>Implicit grant</p></a></li>
                     <li class="separator-bottom"><a href="resource-owner-password.html"><p>Resource Owner Password grant</p></a></li>
-                    <li class="active"><a href="user-details.html"><p>User details</p></a></li>
+                    <li><a href="user-details.html"><p>User details</p></a></li>
                 </ul>
             </section>
 
             <section id="main-content">
-                <h1>User Details</h1>
+                <h1>Authorization Code grant type</h1>
                 
-                <!-- 32-character hex string -->
-                <p>Client Id: <span>5ce421ae36a21816814279c096cf2de5</span></p>
-                <!-- use a cryptographically-secure library to generate a 256-bit value and converting it to a hexadecimal representation. -->
-                <p>Client Key: <span>2c912a631f610895b0ed45923da4b8001826cce4cd135ab0eb7cde51116e6f17</span></p>
-
-                <!-- Only for testing purpose. Will be generated for user and saved in DB -->
             </section>
         </div>
     </body>
