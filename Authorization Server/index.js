@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const port = process.env.AUTH_SERVER_PORT || 3000;
 
-const { oAuthRouter } = require("./router");
+const { oAuthRouter } = require("./routers/oAuthRouter");
+const { userRouter } = require("./routers/userRouter");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -15,6 +16,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/oauth2', oAuthRouter);
+app.use('/api/user', userRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

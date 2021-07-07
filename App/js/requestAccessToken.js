@@ -18,7 +18,7 @@ function addSubmitFormEventListener() {
 function sendAccessTokenRequest(clientCredentials) {
     const accessTokenRequestData = {
         clientCredentials: clientCredentials,
-        grantType: "client-credentials"
+        grantType: "client_credentials"
     }
 
     $.ajax({
