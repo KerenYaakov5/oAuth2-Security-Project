@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const port = process.env.AUTH_SERVER_PORT || 3000;
 
-const { oAuthRouter } = require("./routers/oAuthRouter");
-const { userRouter } = require("./routers/userRouter");
+const { oAuthRouter } = require("./Routers/oAuthRouter");
+const { userRouter } = require("./Routers/userRouter");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
