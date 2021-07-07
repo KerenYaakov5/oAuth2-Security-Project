@@ -22,7 +22,7 @@ function sendAccessTokenRequest(clientCredentials) {
     }
 
     $.ajax({
-        url: "http://localhost:3000/api/oauth2/token",
+        url: "http://localhost:3000/api/oauth2/token", // TODO - change to real server 
         method: "POST",
         data: accessTokenRequestData,
         cache: false,

@@ -77,10 +77,15 @@ p, span {
     /* border-bottom: 1px solid var(--light-bg-color); */
 }
 
+#left-menu ul {
+    overflow-y: auto;
+    max-height: calc(100vh - 70px);
+}
+
 #left-menu li, #left-menu .section-title {
-    height: 32px;
+    height: 30px;
     padding-left: 16px;
-    line-height: 32px;
+    line-height: 30px;
 }
 
 #left-menu li {
