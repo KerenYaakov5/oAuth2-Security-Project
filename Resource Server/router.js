@@ -1,6 +1,8 @@
 const { Router } = require('express');
-const { blogsController } = require('./controller');
+const { employeesController } = require('./controller');
 
-const blogsRouter = new Router();
+const employeesRouter = new Router();
 
-blogsRouter.post('/token', blogsController.getBlogs);
+employeesRouter.get('/', employeesController.getEmployees);
+
+module.exports = { employeesRouter };

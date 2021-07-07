@@ -16,6 +16,10 @@ header, main, footer, nav, aside, section, div {
     --light-bg-color: #f6c453;
 }
 
+.clear {
+    clear: both;
+}
+
 p, span {
     margin: 0;
     padding: 0;
@@ -126,7 +130,6 @@ p, span {
     border-color: var(--light-bg-color);
 }
 
-h1 + main {
+h1 ~ main {
     margin-left: 16px;
 }
-

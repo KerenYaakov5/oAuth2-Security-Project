@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const port = process.env.RESOURCE_SERVER_PORT || 3001;
 
-const { blogsRouter } = require("./router");
+const { employeesRouter } = require("./router");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use('/api/blog', blogsRouter);
+app.use('/api/employees', employeesRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

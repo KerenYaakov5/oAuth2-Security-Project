@@ -26,7 +26,7 @@ exports.oAuthController = {
         }
 
         const accessToken = helper.generateToken(28);
-        console.log({accessToken});
+        // console.log({accessToken});
 
         // TODOs 
         const expiresIn = settingsDataAccess.getExpiresInValue(); 

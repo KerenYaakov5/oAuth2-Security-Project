@@ -27,8 +27,10 @@ function sendAccessTokenRequest(clientCredentials) {
         data: accessTokenRequestData,
         cache: false,
         success: (response) => {
-            console.log("success: " + response);
-            // add access token to html temp with all fields, like valid until 
+            $("main").empty();
+            $("main").append(`<p><b>Response</b> (use the access token to make API calls)</p>`);
+            $("main").append(`<p>Access token: ${response.access_token}</p>`);
+            $("main").append(`<p>Expired in: ${response.expires_in} seconds</p>`);
         },
         error: (error) => {
             console.log(`Error on generating access token: ${error}`);
