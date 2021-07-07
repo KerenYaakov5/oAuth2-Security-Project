@@ -43,7 +43,42 @@
             <section id="main-content">
                 <h1>oAuth2</h1>
 
-                <main></main>
+                <main>
+                    <h4>General</h4>
+                    <p>
+                        OAuth 2 provides several "grant types" for different use cases. The grant types defined are:<br>
+                        <ul>
+                            <li>Authorization Code - for apps running on a web server, browser-based and mobile apps</li>
+                            <li>Client credentials - for application access without a user present</li>
+                            <li>** Implicit was previously recommended for clients without a secret, but has been superseded by using the Authorization Code grant with PKCE.</li>
+                            <li>Password - for logging in with a username and password (only for first-party apps)</li>
+                        </ul>
+                    </p>
+
+
+                    <h4>Client ID</h4>
+                    <p>
+                        The client_id is a public identifier for apps. Even though it’s public, it’s best that it isn’t guessable by third parties, 
+                        so many implementations use something like a 32-character hex string.<br>
+                        It must also be unique across all clients that the authorization server handles. If the client ID is guessable, 
+                        it makes it slightly easier to craft phishing attacks against arbitrary applications.<br>
+                    </p>
+
+                    <h4>Client Secret</h4>
+                    <p>
+                        The client_secret is a secret known only to the application and the authorization server.<br>
+                        It must be sufficiently random to not be guessable, which means you should avoid using 
+                        common UUID libraries which often take into account the timestamp or MAC address of the server generating it.<br>
+                        A great way to generate a secure secret is to use a cryptographically-secure library to generate 
+                        a 256-bit value and converting it to a hexadecimal representation.<br><br>
+                        It is critical that developers never include their client_secret in public (mobile or browser-based) apps.<br>
+                        To help developers avoid accidentally doing this, it’s best to make the client secret visually different from the ID.<br>
+                        This way when developers copy and paste the ID and secret, it is easy to recognize which is which.
+                        Usually using a longer string for the secret is a good way to indicate this
+                    </p>
+
+
+                </main>
                 
             </section>
         </div>
