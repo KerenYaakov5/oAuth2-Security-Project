@@ -7,7 +7,7 @@ exports.signUpController = {
         const userId = req.params.id;
 
         const token = jwt.sign({ id: userId }, SECRET, {
-            expiresIn: 86400 /* expires in 24 hours */
+            expiresIn: 3600 /* expires in an hour */
         }); 
         res.status(200).send({ auth: true, token: token });
     }

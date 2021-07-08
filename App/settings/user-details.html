@@ -10,9 +10,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="../js/connectedUser.js"></script>
-        <script src="../js/requestAccessToken.js"></script>
 
-        <title>Client Credentials</title>
+        <title>User Details</title>
     </head>
     <body>
         <div id="wrapper">
@@ -27,38 +26,32 @@
                     <li><a href="../info/resource-owner-password-info.html"><p>Resource Owner Password</p></a></li>
 
                     <li class="section-title">Demo</li>
-                    <li><a href="authorization-code.html"><p>Authorization code grant</p></a></li>
-                    <li class="active"><a href="#"><p>Client Credentials grant</p></a></li>
-                    <li><a href="implicit.html"><p>Implicit grant</p></a></li>
-                    <li><a href="resource-owner-password.html"><p>Resource Owner Password grant</p></a></li>
+                    <li><a href="../demo/authorization-code.html"><p>Authorization code grant</p></a></li>
+                    <li><a href="../demo/client-credentials.html"><p>Client Credentials grant</p></a></li>
+                    <li><a href="../demo/implicit.html"><p>Implicit grant</p></a></li>
+                    <li><a href="../demo/resource-owner-password.html"><p>Resource Owner Password grant</p></a></li>
 
                     <li class="section-title">Resources</li>
                     <li><a href="../resource/employees.html"><p>Employees page</p></a></li>
 
                     <li class="section-title">Settings</li>
-                    <li><a href="../settings/user-details.html"><p>User details</p></a></li>
-                    <li><a href="../settings/app-settings.html"><p>Application settings</p></a></li>
+                    <li class="active"><a href="#"><p>User details</p></a></li>
+                    <li><a href="app-settings.html"><p>Application settings</p></a></li>
                 </ul>
             </div>
 
             <main>
-                <h1>Client Credentials grant type</h1>
-
-                <form id="oAuthForm" action="#" autocomplete="off">
-                    <div class="form-group col-sm-12">
-                        <label for="clientAuthentication">Client Authentication (base64 encoded string)</label>
-                        <input type="text" name="client-authentication" id="clientAuthentication" class="form-control">
-                    </div>
-            
-                    <div class="form-group col-sm-12">
-                        <button type="submit" class="btn btn-primary-custom">Send</button>
-                    </div>
-                </form>
-
-                <div class="clear"></div>
+                <h1>User Details</h1>
 
                 <div id="main-content">
-                    <!-- Access token response will be here -->
+                    <div id="user-details">
+                        <!-- 32-character hex string -->
+                        <p>Client Id: <span>5ce421ae36a21816814279c096cf2de5</span></p>
+                        <!-- use a cryptographically-secure library to generate a 256-bit value and converting it to a hexadecimal representation. -->
+                        <p>Client Key: <span>2c912a631f610895b0ed45923da4b8001826cce4cd135ab0eb7cde51116e6f17</span></p>
+                        <!-- NWNlNDIxYWUzNmEyMTgxNjgxNDI3OWMwOTZjZjJkZTU6MmM5MTJhNjMxZjYxMDg5NWIwZWQ0NTkyM2RhNGI4MDAxODI2Y2NlNGNkMTM1YWIwZWI3Y2RlNTExMTZlNmYxNw== -->
+                        <!-- Only for testing purpose. Will be generated for user and saved in DB -->
+                    </div>
                 </div>
             </main>
         </div>

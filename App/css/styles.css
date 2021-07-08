@@ -135,7 +135,7 @@ main {
     border-color: var(--light-bg-color);
 }
 
-h1 ~ #main-content {
+#main-content {
     margin-left: 16px;
 }
 

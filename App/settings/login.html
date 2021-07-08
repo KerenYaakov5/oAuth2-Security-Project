@@ -9,10 +9,9 @@
         <link rel="stylesheet" href="../css/styles.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="../js/connectedUser.js"></script>
-        <script src="../js/requestAccessToken.js"></script>
+        <script src="../js/login.js"></script>
 
-        <title>Client Credentials</title>
+        <title>Login</title>
     </head>
     <body>
         <div id="wrapper">
@@ -27,39 +26,40 @@
                     <li><a href="../info/resource-owner-password-info.html"><p>Resource Owner Password</p></a></li>
 
                     <li class="section-title">Demo</li>
-                    <li><a href="authorization-code.html"><p>Authorization code grant</p></a></li>
-                    <li class="active"><a href="#"><p>Client Credentials grant</p></a></li>
-                    <li><a href="implicit.html"><p>Implicit grant</p></a></li>
-                    <li><a href="resource-owner-password.html"><p>Resource Owner Password grant</p></a></li>
+                    <li><a href="../demo/authorization-code.html"><p>Authorization code grant</p></a></li>
+                    <li><a href="../demo/client-credentials.html"><p>Client Credentials grant</p></a></li>
+                    <li><a href="../demo/implicit.html"><p>Implicit grant</p></a></li>
+                    <li><a href="../demo/resource-owner-password.html"><p>Resource Owner Password grant</p></a></li>
 
                     <li class="section-title">Resources</li>
                     <li><a href="../resource/employees.html"><p>Employees page</p></a></li>
 
                     <li class="section-title">Settings</li>
-                    <li><a href="../settings/user-details.html"><p>User details</p></a></li>
-                    <li><a href="../settings/app-settings.html"><p>Application settings</p></a></li>
+                    <li><a href="user-details.html"><p>User details</p></a></li>
+                    <li><a href="app-settings.html"><p>Application settings</p></a></li>
                 </ul>
             </div>
 
             <main>
-                <h1>Client Credentials grant type</h1>
+                <h1>Login</h1>
 
-                <form id="oAuthForm" action="#" autocomplete="off">
-                    <div class="form-group col-sm-12">
-                        <label for="clientAuthentication">Client Authentication (base64 encoded string)</label>
-                        <input type="text" name="client-authentication" id="clientAuthentication" class="form-control">
+                <form id="loginForm" action="post" autocomplete="off">
+                    <div class="form-group col-sm-3">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control">
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="form-group col-sm-3">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control">
                     </div>
             
                     <div class="form-group col-sm-12">
-                        <button type="submit" class="btn btn-primary-custom">Send</button>
+                        <button type="submit" class="btn btn-primary-custom">Login</button>
                     </div>
                 </form>
-
-                <div class="clear"></div>
-
-                <div id="main-content">
-                    <!-- Access token response will be here -->
-                </div>
             </main>
         </div>
     </body>
