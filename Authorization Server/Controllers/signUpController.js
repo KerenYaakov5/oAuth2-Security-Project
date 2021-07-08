@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 const consts = require('../Helpers/constants');
 const { SECRET } = consts;
 
-exports.loginController = {
-    login(req, res) {
+exports.signUpController = {
+    signUp(req, res) {
         const userId = req.params.id;
 
         const token = jwt.sign({ id: userId }, SECRET, {
