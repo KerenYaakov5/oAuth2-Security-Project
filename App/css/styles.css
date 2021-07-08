@@ -110,7 +110,7 @@ p, span {
     margin-top: 24px;
 }
 
-#left-menu li:hover {
+#left-menu li:hover:not(.section-title) {
     background-color: var(--primary-bg-color-darker);
 }
 
