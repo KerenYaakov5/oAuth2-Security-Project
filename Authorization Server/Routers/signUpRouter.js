@@ -1,8 +1,8 @@
-const { Router } = require('express');
-const { signUpController } = require('../Controllers/signUpController');
+// const { Router } = require('express');
+// const { signUpController } = require('../Controllers/signUpController');
 
-const signUpRouter = new Router();
+// const signUpRouter = new Router();
 
-signUpRouter.post('/:id', signUpController.signUp);
+// signUpRouter.post('/:id', signUpController.signUp);
 
-module.exports = { signUpRouter };
+// module.exports = { signUpRouter };

@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = process.env.AUTH_SERVER_PORT || 3000;
 
-const { signUpRouter } = require("./Routers/signUpRouter");
+// const { signUpRouter } = require("./Routers/signUpRouter");
 const { loginRouter } = require("./Routers/loginRouter");
 const { oAuthRouter } = require("./Routers/oAuthRouter");
 const { userRouter } = require("./Routers/userRouter");
@@ -24,7 +24,7 @@ function verifyUser(req, res, next) {
 
 app.use('/api/oauth2', verifyUser, oAuthRouter); 
 app.use('/api/users', verifyUser, userRouter);
-app.use('/api/signUp', signUpRouter);
+// app.use('/api/signUp', signUpRouter);
 app.use('/api/login', loginRouter);
 
 app.use((err, req, res, next) => {
