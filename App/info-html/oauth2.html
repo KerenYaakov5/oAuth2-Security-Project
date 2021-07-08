@@ -15,46 +15,45 @@
     </head>
     <body>
         <div id="wrapper">
-            <section id="left-menu">
+            <div id="left-menu">
                 <div id="logo"></div>
                 <ul>
-                    <p class="section-title">Info</p>
+                    <li class="section-title">Info</li>
                     <li class="active"><a href="#"><p>oAuth2</p></a></li>
                     <li><a href="authorization-code-info.html"><p>Authorization code</p></a></li>
                     <li><a href="client-credentials-info.html"><p>Client Credentials</p></a></li>
                     <li><a href="implicit-info.html"><p>Implicit</p></a></li>
                     <li><a href="resource-owner-password-info.html"><p>Resource Owner Password</p></a></li>
 
-                    <p class="section-title">Demo</p>
+                    <li class="section-title">Demo</li>
                     <li><a href="../demo-html/authorization-code.html"><p>Authorization code grant</p></a></li>
                     <li><a href="../demo-html/client-credentials.html"><p>Client Credentials grant</p></a></li>
                     <li><a href="../demo-html/implicit.html"><p>Implicit grant</p></a></li>
                     <li><a href="../demo-html/resource-owner-password.html"><p>Resource Owner Password grant</p></a></li>
 
-                    <p class="section-title">Resources</p>
+                    <li class="section-title">Resources</li>
                     <li><a href="../resource-html/employees.html"><p>Employees page</p></a></li>
 
-                    <p class="section-title">Settings</p>
+                    <li class="section-title">Settings</li>
                     <li><a href="../user-details.html"><p>User details</p></a></li>
                     <li><a href="../settings.html"><p>Application settings</p></a></li>
                 </ul>
-            </section>
+            </div>
 
-            <section id="main-content">
+            <main>
                 <h1>oAuth2</h1>
 
-                <main>
+                <div id="main-content">
                     <h4>General</h4>
                     <p>
                         OAuth 2 provides several "grant types" for different use cases. The grant types defined are:<br>
-                        <ul>
-                            <li>Authorization Code - for apps running on a web server, browser-based and mobile apps</li>
-                            <li>Client credentials - for application access without a user present</li>
-                            <li>** Implicit was previously recommended for clients without a secret, but has been superseded by using the Authorization Code grant with PKCE.</li>
-                            <li>Password - for logging in with a username and password (only for first-party apps)</li>
-                        </ul>
                     </p>
-
+                    <ul>
+                        <li>Authorization Code - for apps running on a web server, browser-based and mobile apps</li>
+                        <li>Client credentials - for application access without a user present</li>
+                        <li>** Implicit was previously recommended for clients without a secret, but has been superseded by using the Authorization Code grant with PKCE.</li>
+                        <li>Password - for logging in with a username and password (only for first-party apps)</li>
+                    </ul>
 
                     <h4>Client ID</h4>
                     <p>
@@ -77,10 +76,8 @@
                         Usually using a longer string for the secret is a good way to indicate this
                     </p>
 
-
-                </main>
-                
-            </section>
+                </div>
+            </main>
         </div>
     </body>
 </html>

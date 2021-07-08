@@ -27,10 +27,10 @@ function sendAccessTokenRequest(clientCredentials) {
         data: accessTokenRequestData,
         cache: false,
         success: (response) => {
-            $("main").empty();
-            $("main").append(`<p><b>Response</b> (use the access token to make API calls)</p>`);
-            $("main").append(`<p>Access token: ${response.access_token}</p>`);
-            $("main").append(`<p>Expired in: ${response.expires_in} seconds</p>`);
+            $("#main-content").empty();
+            $("#main-content").append(`<p><b>Response</b> (use the access token to make API calls)</p>`);
+            $("#main-content").append(`<p>Access token: ${response.access_token}</p>`);
+            $("#main-content").append(`<p>Expired in: ${response.expires_in} seconds</p>`);
         },
         error: (error) => {
             console.log(`Error on generating access token: ${error}`);

@@ -27,7 +27,7 @@ p, span {
     color: var(--primary-text-color);
 }
 
-ul {
+#left-menu ul {
     list-style: none;
     padding: 0px;
 }
@@ -91,13 +91,13 @@ p, span {
     max-height: calc(100vh - 70px);
 }
 
-#left-menu li, #left-menu .section-title {
+#left-menu li {
     height: 30px;
     padding-left: 16px;
     line-height: 30px;
 }
 
-#left-menu li {
+#left-menu li:not(.section-title) {
     cursor: pointer;
 }
 
@@ -119,7 +119,7 @@ p, span {
 }
 
 /* Main content */
-#main-content {
+main {
     background-color: var(--primary-bg-color); 
     width: calc(100vw - 260px);
 }
@@ -135,14 +135,18 @@ p, span {
     border-color: var(--light-bg-color);
 }
 
-h1 ~ main {
+h1 ~ #main-content {
     margin-left: 16px;
 }
 
-main h4 {
+#main-content h4 {
     font-weight: bold;
 }
 
-main h4:not(:first-child) {
+#main-content h4:not(:first-child) {
     margin-top: 24px;
+}
+
+#main-content ul {
+    margin-left: 14px;
 }
