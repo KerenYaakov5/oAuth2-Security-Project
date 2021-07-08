@@ -147,6 +147,7 @@ h1 ~ #main-content {
     margin-top: 24px;
 }
 
-#main-content ul {
+#main-content ul,
+#main-content ol {
     margin-left: 14px;
 }
