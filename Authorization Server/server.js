@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/oauth2', oAuthRouter);
-app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
