@@ -24,10 +24,14 @@ exports.usersDataAccess = {
                 userName: updatedUser.userName,
                 firstName: updatedUser.firstName,
                 lastName: updatedUser.lastName,
-                userLevel: updatedUser.userLevel
+                userLevel: updatedUser.userLevel,
+                password: updatedUser.password
             });
     },
     async deleteUser(userId) {
         return await User.deleteOne({_id: userId});
+    },
+    async getUserByUsername(username) {
+        return await User.find({userName: username});
     }
 }
