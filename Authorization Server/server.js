@@ -2,21 +2,28 @@ const express = require("express");
 const app = express();
 const port = process.env.AUTH_SERVER_PORT || 3000;
 
+const { loginRouter } = require("./Routers/loginRouter");
 const { oAuthRouter } = require("./Routers/oAuthRouter");
 const { userRouter } = require("./Routers/userRouter");
+const { authMiddleware } = require("./Helpers/authMiddleware");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-Access-Token');
     res.set('Content-Type', 'application/json');
     next();
 });
 
-app.use('/api/oauth2', oAuthRouter);
+app.use((req, res, next) => {
+    authMiddleware.verifyConnectedUser(req, res, next);
+});
+
+app.use('/api/oauth2', oAuthRouter); 
 app.use('/api/users', userRouter);
+app.use('/api/login', loginRouter); 
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

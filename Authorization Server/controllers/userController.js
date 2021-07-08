@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const { usersDataAccess } = require('../DatabaseAccess/usersDataAccess');
 const User = require('../Models/user');
 
@@ -22,7 +23,8 @@ exports.userController = {
             userName: req.body.userName,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            userLevel: req.body.userLevel
+            userLevel: req.body.userLevel,
+            password: bcrypt.hashSync(req.body.password, 8)
         });
 
         usersDataAccess.addUser(newUser)
