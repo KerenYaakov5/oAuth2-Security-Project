@@ -26,7 +26,7 @@ exports.helper = {
             return null;
         }
     },
-    generateToken(bytesSize = 32) { // Done
+    generateToken(bytesSize) { // Done
         const crypto = require("crypto");
 
         return crypto.randomBytes(bytesSize).toString('hex');

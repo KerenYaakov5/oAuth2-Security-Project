@@ -1,6 +1,9 @@
 const bcrypt = require('bcryptjs');
 const { usersDataAccess } = require('../DatabaseAccess/usersDataAccess');
+const { tokensDataAccess } = require('../DatabaseAccess/tokensDataAccess');
+const { oAuthController } = require('./oAuthController');
 const User = require('../Models/user');
+const Token = require('../Models/token');
 
 exports.userController = {
     generateClientKey(req, res) { // TODO - implement
@@ -28,10 +31,23 @@ exports.userController = {
         });
 
         usersDataAccess.addUser(newUser)
-            .then(result => { 
-                if (result) {
-                    usersDataAccess.getUserById(result._id)
-                        .then(user => res.json(user));
+            .then(addUserResult => { 
+                if (addUserResult) {
+                    const userTokens = new Token({
+                        userId: addUserResult._id,
+                        clientId: oAuthController.generateClientId(),
+                        clientSecret: oAuthController.generateClientSecret()
+                    });
+
+                    tokensDataAccess.saveClientTokensInDb(userTokens).
+                        then(addClientTokenResult => {
+                            if (addClientTokenResult) {
+                                usersDataAccess.getUserById(addUserResult._id)
+                                    .then(user => res.json(user));
+                            } else {
+                                res.status(404).send(`Error creating client tokens: ${addClientTokenResult}`);
+                            }
+                        });
                 } else {
                     res.status(404).send(`Error saving a user: ${newUser}`);
                 }

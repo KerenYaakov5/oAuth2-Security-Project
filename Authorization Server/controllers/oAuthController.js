@@ -38,5 +38,11 @@ exports.oAuthController = {
         }
 
         res.json(accessTokenResponse);
+    },
+    generateClientId() {
+        return helper.generateToken(16);
+    },
+    generateClientSecret() {
+        return helper.generateToken(32);
     }
 };
