@@ -21,11 +21,17 @@ function sendAccessTokenRequest(clientCredentials) {
         grantType: "client_credentials"
     }
 
+    const token = getTokenFromCookie();
+    if (!token) {
+        window.location.href = "../settings/login.html";
+    }
+
     $.ajax({
         url: "http://localhost:3000/api/oauth2/token", // TODO - change to real server 
         method: "POST",
         data: accessTokenRequestData,
         cache: false,
+        headers: {'x-access-token' : token},
         success: (response) => {
             $("#main-content").empty();
             $("#main-content").append(`<p><b>Response</b> (use the access token to make API calls)</p>`);
@@ -36,4 +42,17 @@ function sendAccessTokenRequest(clientCredentials) {
             console.log(`Error on generating access token: ${error}`);
         }
     });
+}
+
+function getTokenFromCookie() {
+    const cookie = document.cookie;
+
+    if (!cookie) {
+        return null;
+    }
+
+    const cookieKeyValue = cookie.split(/[;= ]+/); //(';', '=');
+    const userTokenKeyIndex = cookieKeyValue.indexOf('userToken');
+
+    return cookieKeyValue[userTokenKeyIndex + 1];
 }

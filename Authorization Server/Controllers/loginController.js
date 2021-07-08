@@ -1,5 +1,8 @@
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const { usersDataAccess } = require('../DatabaseAccess/usersDataAccess');
+const consts = require('../Helpers/constants');
+const { SECRET } = consts; 
 
 exports.loginController = {
     login(req, res) {
@@ -23,7 +26,15 @@ function comparePasswords(res, user, password) {
 
     bcrypt.compare(password, user[0].password).then((exists) => {
         if (exists) {
-            res.json({"userId": user[0]._id});
+            const token = jwt.sign({ id: user[0]._id }, SECRET, {
+                expiresIn: 3600 /* expires in an hour */
+            });
+
+            res.status(200).send({
+                auth: true, 
+                token: token,
+                userId: user[0]._id
+            });
         } else {
             res.status(404).json(false);
         }

@@ -35,8 +35,8 @@ function sendLoginRequest(username, password) {
         data: loginRequestData,
         cache: false,
         success: (response) => {
-            if (response && response.userId) {
-                saveUserInCookie(response.userId, username);
+            if (response && response.auth) {
+                saveUserInCookie(response, username);
                 window.location.href = "../info/oauth2.html";
             }
         },
@@ -46,12 +46,13 @@ function sendLoginRequest(username, password) {
     });
 }
 
-function saveUserInCookie(userId, userName) {
+function saveUserInCookie(response, userName) {
     const now = new Date();
     now.setTime(now.getTime() + (60*60*1000)); /* Save for an hour */
 
-    document.cookie = `userId=${userId}; expires=${now}; Path=/`;
+    document.cookie = `userId=${response.userId}; expires=${now}; Path=/`;
     document.cookie = `userName=${userName}; expires=${now}; Path=/`;
+    document.cookie = `userToken=${response.token}; expires=${now}; Path=/`;
 }
 
 function isUserConnected() {
