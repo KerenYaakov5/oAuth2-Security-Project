@@ -30,7 +30,6 @@ function sendAccessTokenRequest(clientCredentials) {
         url: "http://localhost:3000/api/oauth2/token", // TODO - change to real server 
         method: "POST",
         data: accessTokenRequestData,
-        cache: false,
         headers: {'x-access-token' : token},
         success: (response) => {
             $("#main-content").empty();

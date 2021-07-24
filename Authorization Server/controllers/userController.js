@@ -14,6 +14,13 @@ exports.userController = {
             .then(users => res.json(users))
             .catch(err => console.log(`Error getting the users from db: ${err}`));
     },
+    getUserDetails(req, res) {
+        const userId = req.params.id;
+
+        usersDataAccess.getUserDetails(userId)
+            .then(user => { res.json(user[0])})
+            .catch(err => console.log(`Error getting user details from db: ${err}`));
+    },
     getUserById(req, res) {
         const userId = req.params.id;
 

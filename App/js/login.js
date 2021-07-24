@@ -33,7 +33,6 @@ function sendLoginRequest(username, password) {
         url: "http://localhost:3000/api/login", // TODO - change to real server 
         method: "POST",
         data: loginRequestData,
-        cache: false,
         success: (response) => {
             if (response && response.auth) {
                 saveUserInCookie(response, username);

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="../css/styles.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="../js/connectedUser.js"></script>
+        <script src="../js/userDetails.js"></script>
 
         <title>User Details</title>
     </head>
@@ -44,13 +44,9 @@
                 <h1>User Details</h1>
 
                 <div id="main-content">
-                    <div id="user-details">
-                        <!-- 32-character hex string -->
-                        <p>Client Id: <span>5ce421ae36a21816814279c096cf2de5</span></p>
-                        <!-- use a cryptographically-secure library to generate a 256-bit value and converting it to a hexadecimal representation. -->
-                        <p>Client Key: <span>2c912a631f610895b0ed45923da4b8001826cce4cd135ab0eb7cde51116e6f17</span></p>
-                        <!-- NWNlNDIxYWUzNmEyMTgxNjgxNDI3OWMwOTZjZjJkZTU6MmM5MTJhNjMxZjYxMDg5NWIwZWQ0NTkyM2RhNGI4MDAxODI2Y2NlNGNkMTM1YWIwZWI3Y2RlNTExMTZlNmYxNw== -->
-                        <!-- Only for testing purpose. Will be generated for user and saved in DB -->
+                    <div>
+                        <p>Client Id: <span id="client-id">value</span></p>
+                        <p>Client Key: <span id="client-key">value</span></p>
                     </div>
                 </div>
             </main>
