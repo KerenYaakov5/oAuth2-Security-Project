@@ -1,5 +1,4 @@
 const { helper } = require('../Helpers/helper');
-const { settingsDataAccess } = require('../DatabaseAccess/settingsDataAccess');
 const { tokensDataAccess } = require('../DatabaseAccess/tokensDataAccess');
 const { usersDataAccess } = require('../DatabaseAccess/usersDataAccess');
 
@@ -28,7 +27,7 @@ exports.oAuthController = {
         const accessToken = helper.generateToken(28);
 
         // TODOs 
-        const expiresIn = settingsDataAccess.getExpiresInValue(); 
+        const expiresIn = getExpiresInValue(); 
         tokensDataAccess.saveAccessTokenInDb(accessToken, expiresIn);
 
         const accessTokenResponse = {
@@ -45,3 +44,7 @@ exports.oAuthController = {
         return helper.generateToken(32);
     }
 };
+
+function getExpiresInValue() {
+    return 5*60; // In seconds
+}
