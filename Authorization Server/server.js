@@ -12,8 +12,13 @@ app.use(express.urlencoded({extended: true}));
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-Access-Token');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, X-Access-Token, X-Auth-Token');
     res.set('Content-Type', 'application/json');
+
+    if (req.method === "OPTIONS") {
+        return res.status(200).end();
+    }
+
     next();
 });
 

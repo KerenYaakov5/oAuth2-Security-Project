@@ -7,7 +7,7 @@ exports.authMiddleware = {
         const token = req.headers['x-access-token'];
 
         if (!token) {
-            res.json("Need to login");
+            res.status(401).send({auth: false, message: "Need to login"});
         } else {
             jwt.verify(token, SECRET, (err, decoded) => {
                 if (!err) {
