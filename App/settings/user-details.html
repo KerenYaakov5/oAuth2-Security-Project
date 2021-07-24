@@ -10,6 +10,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="../js/userDetails.js"></script>
+        <script src="../js/connectedUser.js"></script>
 
         <title>User Details</title>
     </head>
@@ -51,5 +52,17 @@
                 </div>
             </main>
         </div>
+
+        <script>
+            $(document).ready(() => {
+                const userConnected = isUserConnected();
+
+                if (userConnected) {
+                    getUserDetails();
+                } else {
+                    window.location.href = "../settings/login.html";
+                }
+            });
+        </script>
     </body>
 </html>

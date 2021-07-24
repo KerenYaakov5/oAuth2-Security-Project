@@ -1,7 +1,3 @@
-$(document).ready(() => {
-    addSubmitFormEventListener();
-});
-
 function addSubmitFormEventListener() {
     $("#oAuthForm button").click((event) => {
         event.preventDefault();
@@ -38,7 +34,12 @@ function sendAccessTokenRequest(clientCredentials) {
             $("#main-content").append(`<p>Expired in: ${response.expires_in} seconds</p>`);
         },
         error: (error) => {
-            console.log(`Error on generating access token: ${error}`);
+            if (error.status == 401 || error.status == 500) {
+                // document.cookie = "";
+                window.location.href = "../settings/login.html";
+            } else {
+                console.log(`Error on generating access token: ${error}`);
+            }
         }
     });
 }

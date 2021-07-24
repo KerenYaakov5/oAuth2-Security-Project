@@ -1,13 +1,3 @@
-$(document).ready(() => {
-    const isConnected = isUserConnected();
-
-    if (!isConnected) {
-        addLoginFormEventListener();
-    } else {
-        window.location.href = "../info/oauth2.html";
-    }
-});
-
 function addLoginFormEventListener() {
     $("#loginForm button").click((event) => {
         event.preventDefault();
@@ -56,6 +46,8 @@ function saveUserInCookie(response, userName) {
 
 function isUserConnected() {
     const cookie = document.cookie;
-
-    return !!cookie;
+    const cookieKeyValue = cookie.split(/[;= ]+/);
+    const userTokenIndex = cookieKeyValue.indexOf('userToken');
+    const userToken = cookieKeyValue[userTokenIndex + 1];
+    return !!userToken;
 }

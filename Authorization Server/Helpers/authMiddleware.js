@@ -11,10 +11,12 @@ exports.authMiddleware = {
         } else {
             jwt.verify(token, SECRET, (err, decoded) => {
                 if (!err) {
-                    // console.log("id: " + decoded); // { id: '60e6a2e4ba1e5fa298be8a02', iat: 1625735903, exp: 1625822303 }
+                //    console.log("id: " + decoded); // { id: '60e6a2e4ba1e5fa298be8a02', iat: 1625735903, exp: 1625822303 }
 
                     next();
                 } else {
+                //    console.log("err: " + err);
+
                     return res.status(500).send({ auth: false, message: 'Failed to authenticate token' });
                 }
             });
