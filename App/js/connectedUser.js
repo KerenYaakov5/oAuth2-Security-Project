@@ -1,13 +1,10 @@
-$(document).ready(() => {
-    const isConnected = isUserConnected();
-
-    if (!isConnected) {
-        window.location.href = "../settings/login.html";
-    }
-});
-
 function isUserConnected() {
     const cookie = document.cookie;
+    const isConnected = !!cookie;
 
-    return !!cookie;
+    if (!isConnected) {
+        window.location.href = "../settings/login.html"; // TODO - with a link, not automatically
+    } else {
+        return true;
+    }
 }
