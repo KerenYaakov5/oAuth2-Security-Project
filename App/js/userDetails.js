@@ -7,7 +7,7 @@ function getUserDetails() {
     }
 
     $.ajax({
-        url: `http://localhost:3000/api/users/${userId}/details`, // TODO - change to real server 
+        url: `http://localhost:3000/api/users/${userId}/details`,
         method: "GET",
         headers: {'x-access-token' : token},
         success: (response) => {

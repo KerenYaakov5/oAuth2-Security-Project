@@ -12,18 +12,21 @@ function addSubmitFormEventListener() {
 }
 
 function sendAccessTokenRequest(clientCredentials) {
-    const accessTokenRequestData = {
-        clientCredentials: clientCredentials,
-        grantType: "client_credentials"
-    }
-
     const token = getTokenFromCookie();
-    if (!token) {
+    const userId = getUserIdFromCookie();
+
+    if (!token || !userId) {
         window.location.href = "../settings/login.html";
     }
 
+    const accessTokenRequestData = {
+        clientCredentials: clientCredentials,
+        grantType: "client_credentials",
+        userId: userId
+    }
+
     $.ajax({
-        url: "http://localhost:3000/api/oauth2/token", // TODO - change to real server 
+        url: "http://localhost:3000/api/oauth2/token",
         method: "POST",
         data: accessTokenRequestData,
         headers: {'x-access-token' : token},
@@ -35,7 +38,8 @@ function sendAccessTokenRequest(clientCredentials) {
         },
         error: (error) => {
             if (error.status == 401 || error.status == 500) {
-                // document.cookie = "";
+                clearCookie();
+
                 window.location.href = "../settings/login.html";
             } else {
                 console.log(`Error on generating access token: ${error}`);
@@ -51,8 +55,36 @@ function getTokenFromCookie() {
         return null;
     }
 
-    const cookieKeyValue = cookie.split(/[;= ]+/); //(';', '=');
+    const cookieKeyValue = cookie.split(/[;= ]+/);
     const userTokenKeyIndex = cookieKeyValue.indexOf('userToken');
 
     return cookieKeyValue[userTokenKeyIndex + 1];
+}
+
+function getUserIdFromCookie() {
+    const cookie = document.cookie;
+
+    if (!cookie) {
+        return null;
+    }
+
+    const cookieKeyValue = cookie.split(/[;= ]+/);
+    const userIdKeyIndex = cookieKeyValue.indexOf('userId');
+
+    return cookieKeyValue[userIdKeyIndex + 1];
+}
+
+function clearCookie() {
+    const cookie = document.cookie;
+    const cookieKeyValue = cookie.split(/[;= ]+/);
+
+    const userTokenIndex = cookieKeyValue.indexOf('userToken') + 1;
+    const userIdIndex = cookieKeyValue.indexOf('userId') + 1;
+    const userNameIndex = cookieKeyValue.indexOf('userName') + 1;
+
+    const now = new Date();
+
+    document.cookie = `userId=${cookieKeyValue[userIdIndex]}; expires=${now}; Path=/`;
+    document.cookie = `userName=${cookieKeyValue[userNameIndex]}; expires=${now}; Path=/`;
+    document.cookie = `userToken=${cookieKeyValue[userTokenIndex]}; expires=${now}; Path=/`;
 }

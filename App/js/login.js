@@ -20,7 +20,7 @@ function sendLoginRequest(username, password) {
     }
 
     $.ajax({
-        url: "http://localhost:3000/api/login", // TODO - change to real server 
+        url: "http://localhost:3000/api/login",
         method: "POST",
         data: loginRequestData,
         success: (response) => {
