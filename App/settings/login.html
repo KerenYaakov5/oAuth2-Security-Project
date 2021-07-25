@@ -61,8 +61,8 @@
                 addLoginFormEventListener();
                 const userConnected = isUserConnected();
 
-                if (userConnected) {
-                    window.location.href = "../info/oauth2.html";
+                if (!userConnected) {
+                    window.location.href = "../info/login.html";
                 }
             });
         </script>
