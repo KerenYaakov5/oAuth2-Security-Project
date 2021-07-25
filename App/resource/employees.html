@@ -10,6 +10,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="../js/connectedUser.js"></script>
+        <script src="../js/requestResource.js"></script>
 
         <title>Employees (Resource)</title>
     </head>
@@ -35,13 +36,34 @@
 
             <main>
                 <h1>Employees (Resource)</h1>
-                <div id="main-content"></div>
+                <form id="resourceForm" action="#" autocomplete="off">
+                    <div class="form-group col-sm-12">
+                        <label for="accessToken">Access token (from client credentials page)</label>
+                        <input type="text" name="access-token" id="accessToken" class="form-control">
+                    </div>   
+
+                    <div class="form-group col-sm-12">
+                        <button type="submit" class="btn btn-primary-custom">Request resource</button>
+                    </div>
+                </form>
+
+                <div class="clear"></div>
+
+                <div id="main-content">
+                    <!-- Employees response will be here  -->
+               </div>
             </main>
         </div>
 
         <script>
             $(document).ready(() => {
                 const userConnected = isUserConnected();
+
+                if (userConnected) {
+                    addSubmitAccessTokenFormEventListener();
+                } else {
+                    window.location.href = "../settings/login.html";
+                }
             });
         </script>
     </body>
