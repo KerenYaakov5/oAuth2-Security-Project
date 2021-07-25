@@ -6,9 +6,6 @@ const User = require('../Models/user');
 const Token = require('../Models/token');
 
 exports.userController = {
-    generateClientKey(req, res) { // TODO - implement
-        res.json("generateClientKey");
-    },
     getAllUsers(req, res) { 
         usersDataAccess.getAllUsers()
             .then(users => res.json(users))
@@ -17,7 +14,7 @@ exports.userController = {
     getUserDetails(req, res) {
         const userId = req.params.id;
 
-        usersDataAccess.getUserDetails(userId)
+        tokensDataAccess.getUserDetails(userId)
             .then(user => { res.json(user[0])})
             .catch(err => console.log(`Error getting user details from db: ${err}`));
     },

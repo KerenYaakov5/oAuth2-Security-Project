@@ -30,8 +30,6 @@ function comparePasswords(res, user, password) {
                 expiresIn: 3600 /* expires in an hour */
             });
 
-            // console.log("created jwt: " + token);
-
             res.status(200).send({
                 auth: true, 
                 token: token,

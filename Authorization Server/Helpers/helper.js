@@ -1,5 +1,5 @@
 exports.helper = {
-    decodeClientCredentials(clientCredentials) { // Done
+    decodeClientCredentials(clientCredentials) {
         try {
             let decodedString = "";
 

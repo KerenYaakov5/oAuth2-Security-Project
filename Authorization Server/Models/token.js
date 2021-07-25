@@ -3,9 +3,8 @@ const { Schema, model } = require('mongoose');
 const tokenSchema = new Schema({
     userId: { type: String },
     clientId: { type: String },
-    clientSecret: { type: String }, // Need to be hashed
-    // authType: { enum: ["Authorization Code", "Client credentials", "Implicit", "Password"] },
-    accessToken: { type: String }, // Need to be hashed 
+    clientSecret: { type: String },
+    accessToken: { type: String },
     validUntil: { type: Date },
     updateTime: { type: Date }
 }, { collection: 'tokens' });
