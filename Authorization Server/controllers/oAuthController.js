@@ -2,7 +2,7 @@ const { helper } = require('../Helpers/helper');
 const { tokensDataAccess } = require('../DatabaseAccess/tokensDataAccess');
 
 exports.oAuthController = {
-    generateAccessToken(req, res) { // TODO - continue
+    generateAccessToken(req, res) {
         const grantType = req.body.grantType;
         if (!grantType || grantType !== "client_credentials") {
             res.json("Grant type is incorrect");
@@ -29,7 +29,7 @@ exports.oAuthController = {
 
         tokensDataAccess.getUserDetails(userId)
             .then(user => generateAccessTokenForUser(res, user, clientKeys))
-            .catch(err => console.log(`Error getting user credentials from db: ${err}`));
+            .catch(err => res.json(`Error getting user credentials from db: ${err}`));
     },
     generateClientId() {
         return helper.generateToken(16);
@@ -47,14 +47,15 @@ function generateAccessTokenForUser(res, user, clientKeys) {
     if (user && user[0].clientId == clientKeys.clientId && user[0].clientSecret == clientKeys.clientSecret) {
         const accessToken = helper.generateToken(28);
         const expiresIn = getExpiresInValue(); 
-        tokensDataAccess.saveAccessTokenInDb(accessToken, expiresIn);   // TODO
 
         accessTokenResponse = {
             access_token: accessToken,
             expires_in: expiresIn
-        } 
+        }
 
-        res.json(accessTokenResponse);
+        tokensDataAccess.saveAccessTokenInDb(user[0], accessToken, expiresIn, clientKeys)
+            .then(() => res.json(accessTokenResponse))
+            .catch(err => res.json(`Error saving access token in db: ${err}`))
     } else {
         res.json({access_token: "", expires_in: ""});
     }

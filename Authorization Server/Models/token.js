@@ -5,8 +5,7 @@ const tokenSchema = new Schema({
     clientId: { type: String },
     clientSecret: { type: String },
     accessToken: { type: String },
-    validUntil: { type: Date },
-    updateTime: { type: Date }
+    validUntil: { type: Date }
 }, { collection: 'tokens' });
 
 const Token = model('Token', tokenSchema); 

@@ -1,14 +1,18 @@
 const Token = require('../Models/token');
 
 const tokensDataAccess = {    
-    saveAccessTokenInDb(accessToken, expiresIn) {
-        // update
+    async saveAccessTokenInDb(user, accessToken, expiresIn, clientKeys) {
+        const validUntil = new Date();
+        validUntil.setSeconds(validUntil.getSeconds() + expiresIn);
 
-
-
-        // TODO - expiresIn --> validUntil
-    
-        // console.log(`saveAccessTokenInDb: ${accessToken}`); // TODO - implement when there will be a DB
+        return await Token.updateOne(
+            { userId: user.userId },
+            {             
+                clientId: clientKeys.clientId,
+                clientSecret: clientKeys.clientSecret,
+                accessToken: accessToken,
+                validUntil: validUntil
+            });
     },
     async getUserDetails(userId) {
         return await Token.find({userId: userId});
