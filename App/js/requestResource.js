@@ -25,7 +25,7 @@ function sendResourceRequest(accessToken) {
 
     $.ajax({
         url: "http://localhost:3000/api/employees",
-        method: "GET",
+        method: "POST",
         data: resourceRequestData,
         headers: {'x-access-token' : token, "Authorization": accessToken},
         success: (response) => {

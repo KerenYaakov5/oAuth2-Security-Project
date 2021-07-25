@@ -14,6 +14,9 @@ const tokensDataAccess = {
                 validUntil: validUntil
             });
     },
+    async getToken(userId, accessToken) {
+        return await Token.find({userId: userId, accessToken: accessToken});
+    },
     async getUserDetails(userId) {
         return await Token.find({userId: userId});
     },
