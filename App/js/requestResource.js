@@ -1,4 +1,4 @@
-function addSubmitFormEventListener() {
+function addSubmitAccessTokenFormEventListener() {
     $("#resourceForm button").click((event) => {
         event.preventDefault();
 
@@ -20,7 +20,6 @@ function sendResourceRequest(accessToken) {
     }
 
     const resourceRequestData = {
-        accessToken: accessToken,
         userId: userId
     }
 
@@ -28,21 +27,21 @@ function sendResourceRequest(accessToken) {
         url: "http://localhost:3000/api/employees",
         method: "GET",
         data: resourceRequestData,
-        headers: {'x-access-token' : token},
+        headers: {'x-access-token' : token, "Authorization": accessToken},
         success: (response) => {
-            $("#main-content").empty();
-
             console.log("resource response: " + response);
 
-            // $("#main-content").append(`<p><b>Response</b> (use the access token to make API calls)</p>`);
-            // $("#main-content").append(`<p>Access token: ${response.access_token}</p>`);
-            // $("#main-content").append(`<p>Expired in: ${response.expires_in} seconds</p>`);
+            $("#main-content").empty();
+            $("#main-content").append(`<p><b>Resource</b> You got access to resource</p>`);
         },
         error: (error) => {
             if (error.status == 401 || error.status == 500) {
                 clearCookie();
 
                 window.location.href = "../settings/login.html";
+            } else if (error.status == 404) {
+                $("#main-content").empty();
+                $("#main-content").append(`<p>Can't get resource. <br> Access token is invalid. Please try again</p>`);
             } else {
                 console.log(`Error on generating access token: ${error}`);
             }
